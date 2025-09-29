@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Adel - Full Stack Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-content {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Profile Section */
+        .profile-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .company {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .date {
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .experience-details {
+            list-style-type: none;
+        }
+
+        .experience-details li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 30px;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .education-title {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        /* Achievements Section */
+        .achievements-list {
+            list-style-type: none;
+        }
+
+        .achievements-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .achievements-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Certificates Section */
+        .certificates-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .certificate-item {
+            background-color: var(--light);
+            padding: 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Languages Section */
+        .languages-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .language-item {
+            text-align: center;
+        }
+
+        .language-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .language-level {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .header-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .experience-header, .education-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .date {
+                align-self: flex-start;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Abdelrahman Adel" class="profile-img">
+            <div class="header-content">
+                <h1>Abdelrahman Adel</h1>
+                <h2>Full Stack Engineer</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Abdelrahman7adel@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+49 173 6565061</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Oberursel, Hesse, Germany</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profile</h2>
+            </div>
+            <div class="section-content">
+                <p class="profile-text">
+                    Full-stack Software Engineer with strong expertise in C#, .NET Core, Angular, React, TypeScript, and SQL Server. Skilled in designing and delivering scalable, cloud-based microservices architectures with clean code practices and automated testing. Experienced in building end-to-end solutions across backend services, APIs, and modern frontends. Strong background in Agile teamwork, CI/CD pipelines, and cloud deployments. Passionate about applying engineering skills to sustainable and impactful technologies.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            
+            <div class="section-content">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="company">Software Engineer, Youxel Technology</div>
+                        <div class="date">02/2024 – Present</div>
+                    </div>
+                    <div class="location">Germany</div>
+                    <ul class="experience-details">
+                        <li>Built and maintained .NET Core microservices with clean architecture, ensuring scalability, resilience, and security.</li>
+                        <li>Developed customer-facing features in Angular & TypeScript, improving UX for enterprise clients.</li>
+                        <li>Designed and optimized SQL Server databases, reducing reporting time by 40%.</li>
+                        <li>Automated reporting and digital checklists, minimizing errors in inspections.</li>
+                        <li>Deployed services on Azure with CI/CD pipelines, ensuring reliability and smooth releases.</li>
+                        <li>Mentored junior developers on clean architecture, SOLID principles, and testing best practices.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="company">Software Engineer, EFG Hermes</div>
+                        <div class="date">06/2022 – 01/2024</div>
+                    </div>
+                    <div class="location">Egypt</div>
+                    <ul class="experience-details">
+                        <li>Designed backend services with .NET Core & SQL Server for high-volume financial transactions.</li>
+                        <li>Integrated Redis & RabbitMQ for caching and messaging in microservices architecture.</li>
+                        <li>Developed real-time dashboards with SignalR for live trading data.</li>
+                        <li>Implemented automation testing (Selenium, unit tests, integration tests) within CI/CD pipelines.</li>
+                        <li>Reduced execution time by 60% through SQL query optimization.</li>
+                        <li>Collaborated in Agile teams with developers, QA, and stakeholders across different countries.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="section-content">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">.NET (Framework 4+, Core)</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">ASP.NET Core</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">EF Core</span>
+                            <span class="skill-tag">SignalR</span>
+                            <span class="skill-tag">gRPC</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">SQL Server</span>
+                            <span class="skill-tag">Oracle</span>
+                            <span class="skill-tag">Redis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">IIS</span>
+                            <span class="skill-tag">CI/CD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Concepts</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">System Design</span>
+                            <span class="skill-tag">Distributed Systems</span>
+                            <span class="skill-tag">OOP</span>
+                            <span class="skill-tag">SOLID</span>
+                            <span class="skill-tag">Design Patterns</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Testing</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Unit Testing</span>
+                            <span class="skill-tag">Integration Testing</span>
+                            <span class="skill-tag">Selenium</span>
+                            <span class="skill-tag">E2E Testing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Collaboration</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Agile/Scrum</span>
+                            <span class="skill-tag">JIRA</span>
+                            <span class="skill-tag">Code Review</span>
+                            <span class="skill-tag">Mentorship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="section-content">
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">9-Month Professional Diploma in System Development</div>
+                        <div class="date">05/2021 – 04/2022</div>
+                    </div>
+                    <div class="institution">ITI Smart Village, Egypt</div>
+                    <p>Full-stack training: C#, .NET Core, SQL, Angular, Clean Architecture, System Design.</p>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">Trainer in Competitive Programming and Algorithms</div>
+                        <div class="date">06/2020 – 04/2021</div>
+                    </div>
+                    <div class="institution">Coach Academy, Egypt</div>
+                    <p>Completed intensive C++ and algorithm program. Solved 2,000+ problems on LeetCode, Codeforces, and HackerRank. Specialized in data structures, dynamic programming, graph theory, algorithm design, and competitive problem-solving.</p>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div class="education-title">Communication Engineering</div>
+                        <div class="date">07/2015 – 07/2020</div>
+                    </div>
+                    <div class="institution">Canadian International College, Egypt</div>
+                    <p>Grade: Very Good | Graduation Project Grade: Excellent</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements</h2>
+            </div>
+            <div class="section-content">
+                <ul class="achievements-list">
+                    <li>Selected as one of only 37 candidates from over 12,000 applicants annually for the ITI Professional Training Diploma, following a highly competitive process based on IQ, advanced problem-solving assessments, and multiple interviews evaluating both technical and soft skills.</li>
+                    <li>Optimized SQL Server database performance, improving report generation and dashboard speed by 40%.</li>
+                    <li>Reduced code execution time by 60% through query optimization and automation testing.</li>
+                    <li>Solved 2,000+ competitive programming problems on LeetCode, Codeforces, and HackerRank.</li>
+                    <li>Graduation Project Grade: Excellent – Canadian International College.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certificates</h2>
+            </div>
+            <div class="section-content">
+                <div class="certificates-list">
+                    <div class="certificate-item">System Design Fundamentals By Designgurus</div>
+                    <div class="certificate-item">Distributed Systems By Educative</div>
+                    <div class="certificate-item">System Design By AlgoExpert</div>
+                    <div class="certificate-item">Problem Solving Expert By AlgoExpert</div>
+                    <div class="certificate-item">Angular</div>
+                    <div class="certificate-item">Software Architecture Essentials: Master Common Patterns</div>
+                    <div class="certificate-item">E-Shop Modulith: .NET, ASP.NET Web API, PostgreSQL, Redis, RabbitMQ, Keycloak, Seq, Docker</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Languages</h2>
+            </div>
+            <div class="section-content">
+                <div class="languages-container">
+                    <div class="language-item">
+                        <div class="language-name">Arabic</div>
+                        <div class="language-level">Native</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <div class="language-level">Professional</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">German</div>
+                        <div class="language-level">B1 in progress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Connect with me on professional networks</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-leetcode"></i></a>
+            </div>
+            <p style="margin-top: 20px;">&copy; 2025 Abdelrahman Adel. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
